@@ -1,13 +1,13 @@
 
 The idea of writing this post is to give you rough understanding of espresso with robot pattern combined with Cucumber and other dependencies like Mockito and JUnit, I have referred and copied content from multiple sources.
 
-###What is Cucumber why should I use it in my project?
+### What is Cucumber why should I use it in my project?
 
-I think we should look at what is Behaviors Driven Development before talking about Cucumber
+I think we should look at what is Behaviors Driven Development before talking about Cucumber, we will come back to cucmber after mentioning what is BDD.
 
 For further reference about [Cucumber](https://cucumber.io/docs/)
 
-###So what is BDD(Behaviors Driven Development)?
+### So what is BDD(Behaviors Driven Development)?
 
 Behavior-driven development (BDD) is an Agile software development methodology in which an application is documented and designed around the behavior a user expects to experience when interacting with it. By encouraging developers to focus only on the requested behaviors of an app or program, BDD helps to avoid bloat, excessive code, unnecessary features or lack of focus. This methodology combines, augments and refines the practices used in test-driven development (TDD) and acceptance testing, BDD can be seen as a set of best practices for writing great tests.
 
@@ -15,7 +15,9 @@ The benefits you can get from BDD (if you do it well) is less rework, fewer bugs
 
 To dig more about [BDD](https://inviqa.com/blog/bdd-guide)
 
-###What is Espresso?
+### What is Espresso?
+
+Now lets look at what is espresso before moving on incase you need to refresh or never know about it.
 
 Espresso is a UI test framework (part of the Android Testing Support Library) that allows you to create automated UI tests for your Android app. Espresso tests run on actual device or emulator (they are instrumentation based tests) and behave as if an actual user is using the app (i.e. if a particular view is off screen, the test won't be able to interact with it).
 
@@ -25,9 +27,9 @@ Please make sure you understood espresso before going for how to utilise robot p
 
 For further reference [Espresso](https://developer.android.com/training/testing/espresso)
 
-####Now lets look at what is Robot Pattern and what problem it solve
+#### Now lets look at what is Robot Pattern and the problem it solve.
 
-Espresso allows us to write Android UI tests. Creating automated tests should be a part of our development process. But it is not always easy to create a full set UI tests. Robot pattern fits with Espresso and allows to create clear and understandable tests. You can see more details from its creator Jake Wharton from[Here](https://jakewharton.com/testing-robots/).
+Espresso allows us to write Android UI tests. Creating automated tests should be a part of our development process. But it is not always easy to create a full set UI tests. Robot pattern fits with Espresso and allows to create clear and understandable tests.
 
 > The main aim is separating the WHAT from the HOW.
 
@@ -79,15 +81,15 @@ This is just an example to show you how robot pattern makes the test clean and c
 
 Hope above mentioned example gave you an insight about adavantageous of using robot pattern.
 
-For further reference [Robot pattern by by Jake Wharton](https://academy.realm.io/posts/kau-jake-wharton-testing-robots/)
+For further reference [Robot pattern by by Jake Wharton](https://academy.realm.io/posts/kau-jake-wharton-testing-robots/) and [testing-robots](https://jakewharton.com/testing-robots/).
 
-####Now lets look at cucumber and how we can combine it with espresso.
+### Now lets look at What is Cucumber and how we can combine it with espresso.
 
 Cucumber is a tool that supports BDD, which is a variant of TDD (Test-Driven Development). With BDD, *all* the tests are customer acceptance tests, written in plain (human) language so that non-technical stakeholders can understand them. Cucumber combines requirements specifications, automated tests and living documentation into a single format called **Gherkin**, which is just plain English with a little more structure.
 
 [Read more about Cucumber](https://cucumber.io/docs/)
 
-####Setup of cucumber in android project
+#### Setup of cucumber in android project
 
 Use below dependency in app.gradle
 
@@ -117,7 +119,7 @@ class TestCucumberJUnitRunner : CucumberAndroidJUnitRunner() {
 testInstrumentationRunner "com.startappz.alhaddaf.runner.TestCucumberJUnitRunner"
 ```
 
-####Running Cucumber
+#### Running Cucumber
 
 Cucumber is a JUnit extension. It is launched by running JUnit from your build tool or your IDE.
 
@@ -139,7 +141,7 @@ class CucumberTestCase
 Install **Gherkin plugin** in android studio
 Open ***Peferences > Plugins***, search “Gherkin” and install the plugin.
 
-####Add sourceSets
+#### Add sourceSets
 
 Add this block inside **app.gradle** android block.
 ```
@@ -150,7 +152,7 @@ sourceSets {
 }
 ```
 
-####Gherkin how to?
+#### Gherkin how to?
 
 Gherkin uses a set of special keywords to give structure and meaning to executable specifications. Each keyword is translated to many spoken languages; I have listed some reference below which is in English.
 
@@ -313,7 +315,7 @@ class LoginSteps {
 
 **@MediumTest** This annotation is used to categorise the test and the annotation is a part of ***androidx.test:runner:###***, refer about it on [test-sizes](https://testing.googleblog.com/2010/12/test-sizes.html) 
 
-####Cucumber Hooks
+#### Cucumber Hooks
 
 Cucumber supports hooks, which are blocks of code that run before or after each scenario. You can define them anywhere in your project or step definition layers, using the methods @Before and @After. Cucumber Hooks allows us to better manage the code workflow and helps us to reduce the code redundancy. We can say that it is an unseen step, which allows us to perform our scenarios or tests.
 
